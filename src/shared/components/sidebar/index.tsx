@@ -19,7 +19,7 @@ type categoryType = {
   todoList: todoListType[];
 };
 export const Sidebar: Component = () => {
-  console.log("app sidebar");
+  console.log("sidebar rendered");
 
   // ref
   let inputRef: HTMLInputElement | ((el: HTMLInputElement) => void) | undefined;

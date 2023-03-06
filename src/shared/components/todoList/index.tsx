@@ -20,6 +20,7 @@ type categoryType = {
 };
 
 export const TodoList = () => {
+  console.log("todoList rendered");
   // ref
   let inputTodoRef:
     | HTMLInputElement
@@ -79,9 +80,6 @@ export const TodoList = () => {
       inputTodoRef.value = "";
     }
   }
-
-  console.log(currentDataReverse());
-  console.log(typeof todoState);
 
   return (
     <div class="flex flex-col items-center justify-center w-full gap-4">

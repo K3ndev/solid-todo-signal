@@ -35,7 +35,6 @@ export const addName = (argName: string) => {
   setTodoState({ name: argName, categoryList: todoState.categoryList });
 };
 export const addCategory = (argCategory: categoryType) => {
-  console.log("run");
   setTodoState({
     name: todoState.name,
     categoryList: [...todoState.categoryList, argCategory],
