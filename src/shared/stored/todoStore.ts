@@ -70,6 +70,61 @@ export const changeIsUsed = (argCategory: categoryType) => {
     }),
   });
 };
-const addList = () => {};
-const removeList = () => {};
-const changeIsChecked = () => {};
+export const addList = (argTodoList: todoListType) => {
+  setTodoState({
+    name: todoState.name,
+    categoryList: todoState.categoryList.map((item: categoryType) => {
+      if (item.isUsed) {
+        return {
+          id: item.id,
+          categoryName: item.categoryName,
+          isUsed: true,
+          todoList: [...item.todoList, argTodoList],
+        };
+      }
+      return item;
+    }),
+  });
+};
+export const removeList = (argTodoList: todoListType) => {
+  setTodoState({
+    name: todoState.name,
+    categoryList: todoState.categoryList.map((item: categoryType) => {
+      if (item.isUsed === true) {
+        return {
+          id: item.id,
+          categoryName: item.categoryName,
+          isUsed: item.isUsed,
+          todoList: item.todoList.filter((item: todoListType) => {
+            return item.id !== argTodoList.id;
+          }),
+        };
+      }
+      return item;
+    }),
+  });
+};
+export const changeIsChecked = (argTodoList: todoListType) => {
+  setTodoState({
+    name: todoState.name,
+    categoryList: todoState.categoryList.map((item: categoryType) => {
+      if (item.isUsed === true) {
+        return {
+          id: item.id,
+          categoryName: item.categoryName,
+          isUsed: item.isUsed,
+          todoList: item.todoList.map((item: todoListType) => {
+            if (item.id === argTodoList.id) {
+              return {
+                id: item.id,
+                isChecked: !item.isChecked,
+                list: item.list,
+              };
+            } else return item;
+          }),
+        };
+      }
+      return item;
+    }),
+  });
+};

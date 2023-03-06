@@ -1,6 +1,6 @@
 import type { Component } from "solid-js";
 import { format } from "date-fns";
-import { Sidebar } from "./shared/components/index";
+import { Sidebar, TodoList } from "./shared/components/index";
 import { todoState } from "./shared/stored/todoStore";
 
 const App: Component = () => {
@@ -40,7 +40,7 @@ const App: Component = () => {
                 </div>
               </div>
             </div>
-            {/* <TodoList /> */}
+            <TodoList />
           </div>
         </section>
       </main>

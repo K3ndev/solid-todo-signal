@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "date-fns": "^2.29.3",
+    "solid-icons": "^1.0.4",
     "solid-js": "^1.6.10"
   }
 }
