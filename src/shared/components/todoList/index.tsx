@@ -20,7 +20,6 @@ type categoryType = {
 };
 
 export const TodoList = () => {
-  console.log("todoList rendered");
   // ref
   let inputTodoRef:
     | HTMLInputElement
@@ -106,7 +105,7 @@ export const TodoList = () => {
         </label>
       </form>
       {/* list */}
-      <div class="scrollbar-hide flex h-[68vh] w-full flex-col gap-3">
+      <div class="scrollbar-hide flex h-[68vh] w-full flex-col gap-3 overflow-auto">
         {/*  */}
         {currentDataLength().length === 1 &&
           currentDataReverse().map((item: todoListType) => {

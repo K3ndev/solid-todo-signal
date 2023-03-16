@@ -1,10 +1,10 @@
-import type { Component } from "solid-js";
+import { Component, createSignal } from "solid-js";
 import { format } from "date-fns";
-import { Sidebar, TodoList } from "./shared/components/index";
+import { Sidebar, TodoList, Modal } from "./shared/components/index";
 import { todoState } from "./shared/stored/todoStore";
 
 const App: Component = () => {
-  console.log("app rendered");
+  const [isOpen, setIsOpen] = createSignal(true);
 
   // states
   const date = new Date();
@@ -23,6 +23,7 @@ const App: Component = () => {
 
   return (
     <>
+      {isOpen() && <Modal setIsOpen={setIsOpen} />}
       <main class="relative flex h-screen w-screen gap-7 bg-[#EAEDEE] p-10">
         <Sidebar />
 

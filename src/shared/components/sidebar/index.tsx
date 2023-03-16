@@ -19,8 +19,6 @@ type categoryType = {
   todoList: todoListType[];
 };
 export const Sidebar: Component = () => {
-  console.log("sidebar rendered");
-
   // ref
   let inputRef: HTMLInputElement | ((el: HTMLInputElement) => void) | undefined;
 
@@ -73,7 +71,7 @@ export const Sidebar: Component = () => {
 
   return (
     <aside class="hidden h-[90vh] w-[44%] justify-center rounded-[20px] bg-white p-10 md:w-[34%] lg:inline-flex">
-      <div class="scrollbar-hide h-[82vh] w-full">
+      <div class="scrollbar-hide h-[82vh] w-full overflow-auto">
         <div class="flex flex-col max-w-full gap-4">
           {/* list */}
           {todoState.categoryList.map((item: categoryType) => {
