@@ -106,7 +106,7 @@ export function Modal(props: any) {
                     >
                       Continue
                     </button>
-                    <button
+                    {/* <button
                       class="bg-white rounded-lg text-[#008FFD] py-3 px-6 md:py-2 md:px-5 text-sm mb-7 shadow-lg border flex items-center"
                       onClick={() => {
                         console.log("not available yet");
@@ -131,7 +131,7 @@ export function Modal(props: any) {
                         </g>
                       </svg>
                       Gmail
-                    </button>
+                    </button> */}
                   </div>
                 )}
               </div>

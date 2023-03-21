@@ -1,10 +1,11 @@
-import { Component, createSignal } from "solid-js";
+import { Component, createSignal, onMount } from "solid-js";
 import { format } from "date-fns";
 import { Sidebar, TodoList, Modal } from "./shared/components/index";
 import { todoState } from "./shared/stored/todoStore";
+import { allCategory, addName } from "./shared/stored/todoStore";
 
 const App: Component = () => {
-  const [isOpen, setIsOpen] = createSignal(true);
+  const [isOpen, setIsOpen] = createSignal(false);
 
   // states
   const date = new Date();
@@ -20,6 +21,20 @@ const App: Component = () => {
     }
   };
   const period = periodFN();
+
+  onMount(() => {
+    const todoNameLocal = localStorage.getItem("todo-name");
+    const todoDataLocal = localStorage.getItem("todo-data");
+    if (!todoNameLocal) {
+      setIsOpen(true);
+    }
+    if (todoNameLocal) {
+      addName(JSON.parse(todoNameLocal));
+    }
+    if (todoDataLocal) {
+      allCategory(JSON.parse(todoDataLocal));
+    }
+  });
 
   return (
     <>

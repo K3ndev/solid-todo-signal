@@ -31,14 +31,23 @@ export const [todoState, setTodoState] = createStore<todoStateType>({
   ],
 });
 
+export const allCategory = (argCategory: []) => {
+  setTodoState({
+    name: todoState.name,
+    categoryList: argCategory,
+  });
+};
+
 export const addName = (argName: string) => {
   setTodoState({ name: argName, categoryList: todoState.categoryList });
+  localStorage.setItem("todo-name", JSON.stringify(todoState.name));
 };
 export const addCategory = (argCategory: categoryType) => {
   setTodoState({
     name: todoState.name,
     categoryList: [...todoState.categoryList, argCategory],
   });
+  localStorage.setItem("todo-data", JSON.stringify(todoState.categoryList));
 };
 export const removeCategory = (argId: number) => {
   setTodoState({
@@ -47,6 +56,7 @@ export const removeCategory = (argId: number) => {
       return argId !== item.id;
     }),
   });
+  localStorage.setItem("todo-data", JSON.stringify(todoState.categoryList));
 };
 export const changeIsUsed = (argCategory: categoryType) => {
   setTodoState({
@@ -68,6 +78,7 @@ export const changeIsUsed = (argCategory: categoryType) => {
       };
     }),
   });
+  localStorage.setItem("todo-data", JSON.stringify(todoState.categoryList));
 };
 export const addList = (argTodoList: todoListType) => {
   setTodoState({
@@ -84,6 +95,7 @@ export const addList = (argTodoList: todoListType) => {
       return item;
     }),
   });
+  localStorage.setItem("todo-data", JSON.stringify(todoState.categoryList));
 };
 export const removeList = (argTodoList: todoListType) => {
   setTodoState({
@@ -102,6 +114,7 @@ export const removeList = (argTodoList: todoListType) => {
       return item;
     }),
   });
+  localStorage.setItem("todo-data", JSON.stringify(todoState.categoryList));
 };
 export const changeIsChecked = (argTodoList: todoListType) => {
   setTodoState({
@@ -126,4 +139,5 @@ export const changeIsChecked = (argTodoList: todoListType) => {
       return item;
     }),
   });
+  localStorage.setItem("todo-data", JSON.stringify(todoState.categoryList));
 };
