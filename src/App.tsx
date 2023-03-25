@@ -25,11 +25,17 @@ const App: Component = () => {
   onMount(() => {
     const todoNameLocal = localStorage.getItem("todo-name");
     const todoDataLocal = localStorage.getItem("todo-data");
+    console.log(todoNameLocal);
     if (!todoNameLocal) {
       setIsOpen(true);
+      addName("Human");
     }
     if (todoNameLocal) {
       addName(JSON.parse(todoNameLocal));
+
+      if (JSON.parse(todoNameLocal) === "Human") {
+        setIsOpen(true);
+      }
     }
     if (todoDataLocal) {
       allCategory(JSON.parse(todoDataLocal));

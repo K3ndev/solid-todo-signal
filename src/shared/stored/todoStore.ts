@@ -20,7 +20,7 @@ type todoStateType = {
 };
 
 export const [todoState, setTodoState] = createStore<todoStateType>({
-  name: "Human",
+  name: "",
   categoryList: [
     {
       id: 1,
