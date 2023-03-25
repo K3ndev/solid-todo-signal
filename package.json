@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "date-fns": "^2.29.3",
+    "firebase": "^9.18.0",
+    "solid-firebase": "^0.1.7",
     "solid-icons": "^1.0.4",
     "solid-js": "^1.6.10"
   }

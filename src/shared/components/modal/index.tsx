@@ -1,9 +1,16 @@
-import { createSignal } from "solid-js";
+import { createSignal, Setter } from "solid-js";
 import { Portal } from "solid-js/web";
 import { addName } from "../../stored/todoStore";
 import DonaAvatar from "../../assets/dona_Avatar.svg";
+import { signInWithPopup, signOut } from "firebase/auth";
+import { auth, googleProvider } from "../../config/firebase";
 
-export function Modal(props: any) {
+// type
+type ModalType = {
+  setIsOpen: Setter<boolean>;
+};
+
+export function Modal(props: ModalType) {
   const [modalCurrent, setModalCurrent] = createSignal(1);
   let inputNameRef:
     | HTMLInputElement
@@ -27,14 +34,27 @@ export function Modal(props: any) {
 
     if (inputNameRef instanceof HTMLInputElement) {
       if (inputNameRef.value !== "") {
-        props.setIsOpen(() => {
-          false;
-        });
+        props.setIsOpen(false);
 
         addName(inputNameRef.value);
 
         inputNameRef.value = "";
       }
+    }
+  };
+
+  const firebaseHandler = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      if (auth.currentUser) {
+        addName(auth.currentUser.displayName!.split(" ")[0]);
+      }
+
+      // temp, we just need to get the name of the user
+      await signOut(auth);
+      props.setIsOpen(false);
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -106,10 +126,10 @@ export function Modal(props: any) {
                     >
                       Continue
                     </button>
-                    {/* <button
+                    <button
                       class="bg-white rounded-lg text-[#008FFD] py-3 px-6 md:py-2 md:px-5 text-sm mb-7 shadow-lg border flex items-center"
                       onClick={() => {
-                        console.log("not available yet");
+                        firebaseHandler();
                       }}
                     >
                       <svg
@@ -131,7 +151,7 @@ export function Modal(props: any) {
                         </g>
                       </svg>
                       Gmail
-                    </button> */}
+                    </button>
                   </div>
                 )}
               </div>

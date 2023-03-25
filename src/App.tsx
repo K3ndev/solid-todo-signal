@@ -25,7 +25,6 @@ const App: Component = () => {
   onMount(() => {
     const todoNameLocal = localStorage.getItem("todo-name");
     const todoDataLocal = localStorage.getItem("todo-data");
-    console.log(todoNameLocal);
     if (!todoNameLocal) {
       setIsOpen(true);
       addName("Human");
