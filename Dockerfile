@@ -15,8 +15,7 @@ RUN pnpm run build
 
 EXPOSE 4173
 
-# CMD ["npm", "start"]
-CMD ["pnpm", "serve"]
+CMD ["pnpm", "start"]
 
 # command
 # sudo docker compose build
