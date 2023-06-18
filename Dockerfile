@@ -11,12 +11,12 @@ RUN pnpm install
 COPY . /app
 
 # RUN npm run build
-# RUN pnpm run build
+RUN pnpm run build
 
-EXPOSE 3000
+EXPOSE 4173
 
 # CMD ["npm", "start"]
-CMD ["pnpm", "dev"]
+CMD ["pnpm", "serve"]
 
 # command
 # sudo docker compose build
